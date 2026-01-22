@@ -24,4 +24,19 @@ public class CustomerServiceImpl implements CustomerService {
     public List<CustomerBO> getAllCustomer() {
         return customerDao.findAll();
     }
+
+    @Override
+    public CustomerBO getCustomerById(Long id) {
+        return customerDao.getCustomerById(id);
+    }
+
+    @Override
+    public CustomerBO updateCustomer(CustomerBO customerBO) {
+        return customerDao.updateCustomer(customerBO);
+    }
+
+    @Override
+    public void deleteCustomer(Long id){
+        customerDao.deleteCustomer(id);
+    }
 }

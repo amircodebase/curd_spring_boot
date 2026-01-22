@@ -33,4 +33,25 @@ public class CustomerDaoImpl implements CustomerDao {
                 .createQuery("SELECT c FROM CustomerBO c", CustomerBO.class)
                 .getResultList();
     }
+
+    @Override
+    public CustomerBO getCustomerById(Long id) {
+        return entityManager.find(CustomerBO.class, id);
+    }
+
+    @Override
+    public CustomerBO updateCustomer(CustomerBO customerBO) {
+        CustomerBO updatedCustomer = entityManager.merge(customerBO);
+        logger.info("Customer updated successfully, Customer Details={}", updatedCustomer);
+        return updatedCustomer;
+    }
+
+    @Override
+    public void deleteCustomer(Long id) {
+        CustomerBO customer = entityManager.find(CustomerBO.class, id);
+        if (customer != null) {
+            entityManager.remove(customer);
+            logger.info("Customer deleted successfully, id={}", id);
+        }
+    }
 }

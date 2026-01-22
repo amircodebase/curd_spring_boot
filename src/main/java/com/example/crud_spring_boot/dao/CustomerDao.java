@@ -9,4 +9,10 @@ public interface CustomerDao {
     CustomerBO saveCustomer(CustomerBO customerBO);
 
     List<CustomerBO> findAll();
+
+    CustomerBO getCustomerById(Long id);
+
+    CustomerBO updateCustomer(CustomerBO customerBO);
+
+    void deleteCustomer(Long id);
 }
